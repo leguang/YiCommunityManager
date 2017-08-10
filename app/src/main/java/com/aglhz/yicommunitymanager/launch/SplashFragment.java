@@ -12,6 +12,7 @@ import com.aglhz.yicommunitymanager.R;
 import com.aglhz.yicommunitymanager.common.ApiService;
 import com.aglhz.yicommunitymanager.common.Constants;
 import com.aglhz.yicommunitymanager.common.UserHelper;
+import com.aglhz.yicommunitymanager.login.LoginActivity;
 import com.aglhz.yicommunitymanager.web.WebActivity;
 
 import cn.itsite.abase.common.RxManager;
@@ -52,16 +53,15 @@ public class SplashFragment extends BaseFragment {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(baseBean -> {
-                    ALog.e("1111111111");
                     if (baseBean.getOther().getCode() == Constants.RESPONSE_CODE_LOGOUT) {
+                        go2Main();
+                    } else {
                         UserHelper.clear();
+                        go2Login();
                     }
-                    go2Main();
                 }, throwable -> {
-                    ALog.e("1111111111");
-
                     ALog.e(throwable);
-                    go2Main();
+                    go2Login();
                 })
         );
     }
@@ -70,6 +70,13 @@ public class SplashFragment extends BaseFragment {
         Intent intent = new Intent(_mActivity, WebActivity.class);
         intent.putExtra("link", "https://github.com/leguang/YiCommunityManager");
         startActivity(intent);
+        _mActivity.overridePendingTransition(0, 0);
+        //此处之所以延迟退出是因为立即退出在小米手机上会有一个退出跳转动画，而我不想要这个垂直退出的跳转动画。
+        new Handler().postDelayed(() -> _mActivity.finish(), 1000);
+    }
+
+    private void go2Login() {
+        startActivity(new Intent(_mActivity, LoginActivity.class));
         _mActivity.overridePendingTransition(0, 0);
         //此处之所以延迟退出是因为立即退出在小米手机上会有一个退出跳转动画，而我不想要这个垂直退出的跳转动画。
         new Handler().postDelayed(() -> _mActivity.finish(), 1000);

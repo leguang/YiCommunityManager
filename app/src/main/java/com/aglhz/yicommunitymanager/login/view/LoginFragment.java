@@ -45,10 +45,6 @@ public class LoginFragment extends BaseFragment<LoginContract.Presenter> impleme
     @BindView(R.id.bt_login)
     Button btLogin;
     Unbinder unbinder;
-    @BindView(R.id.toolbar_title)
-    TextView toolbarTitle;
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
     private Params params = Params.getInstance();
 
     public static LoginFragment newInstance() {
@@ -83,8 +79,6 @@ public class LoginFragment extends BaseFragment<LoginContract.Presenter> impleme
             etUsername.setText(UserHelper.getAccount());
             etPassword.setText(UserHelper.getPassword());
         }
-
-        initStateBar(toolbar);
     }
 
     @Override
@@ -101,7 +95,7 @@ public class LoginFragment extends BaseFragment<LoginContract.Presenter> impleme
             case R.id.bt_login:
                 params.user = etUsername.getText().toString().trim();
                 params.pwd = etPassword.getText().toString().trim();
-                mPresenter.start(params);
+                mPresenter.requestLogin(params);
                 break;
         }
     }
@@ -139,7 +133,6 @@ public class LoginFragment extends BaseFragment<LoginContract.Presenter> impleme
     @Override
     public void responseLogin(Params params) {
         UserHelper.setRemember(cbRemember.isChecked());
-//        EventBus.getDefault().post(new EventData(Constants.login));
         _mActivity.finish();
     }
 }

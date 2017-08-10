@@ -28,13 +28,13 @@
 
     <!--启动页（包括闪屏+Guide）主题-->
     <style name="LaunchTheme" parent="AppTheme">
-        <item name="android:windowBackground">@drawable/bg_login_1242_2208</item>
+        <item name="android:windowBackground">@drawable/bg_splash_1242_2208</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowAnimationStyle">@style/NoAnimationTheme</item>
     </style>
 
     <style name="Transparent" parent="AppTheme">
-        <item name="android:windowBackground">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:colorBackgroundCacheHint">@null</item>
         <item name="android:windowAnimationStyle">@style/NoAnimationTheme</item>
