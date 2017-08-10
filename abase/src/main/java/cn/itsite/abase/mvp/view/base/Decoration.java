@@ -13,7 +13,8 @@ import android.view.View;
  * Author：leguang on 2016/10/9 0009 15:49
  * Email：langmanleguang@qq.com
  */
-public class Decoration extends RecyclerView.ItemDecoration{
+public class Decoration extends RecyclerView.ItemDecoration {
+    public final String TAG = Decoration.class.getSimpleName();
 
     //获取系统默认的分割线样式
     private static final int[] ATTRS = new int[]{

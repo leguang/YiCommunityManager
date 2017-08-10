@@ -10,9 +10,12 @@ import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import cn.itsite.abase.common.Constants;
+import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -22,27 +25,16 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Email：langmanleguang@qq.com
  */
 public class HttpHelper {
-    private static final String TAG = HttpHelper.class.getSimpleName();
+    public static final String TAG = HttpHelper.class.getSimpleName();
     public static String BASE_URL = "http://www.aglhz.com:8090";
     private static OkHttpClient mOkHttpClient;
     private static Retrofit mRetrofit;
+    private static final int TIMEOUT = 35;
 
     //构造方法私有
     private HttpHelper() {
         initRetrofit();
     }
-
-    //获取单例
-//    public static HttpHelper getInstance() {
-//        if (INSTANCE == null) {
-//            synchronized (HttpHelper.class) {
-//                if (INSTANCE == null) {
-//                    INSTANCE = new HttpHelper();
-//                }
-//            }
-//        }
-//        return INSTANCE;
-//    }
 
     /**
      * 初始化OkHttp
@@ -55,25 +47,19 @@ public class HttpHelper {
                 builder.interceptors().clear();
             }
 
-//            File cacheFile = new File(Constants.PATH_NET_CACHE);
-//            Cache cache = new Cache(cacheFile, 1024 * 1024 * 50);
+            File cacheFile = new File(Constants.PATH_NET_CACHE);
+            Cache cache = new Cache(cacheFile, 1024 * 1024 * 50);
 
             //设置缓存
-//            builder.cache(cache);
+            builder.cache(cache);
             //设置超时
-            builder.connectTimeout(50, TimeUnit.SECONDS);
-            builder.readTimeout(50, TimeUnit.SECONDS);
-            builder.writeTimeout(50, TimeUnit.SECONDS);
+            builder.connectTimeout(TIMEOUT, TimeUnit.SECONDS);
+            builder.readTimeout(TIMEOUT, TimeUnit.SECONDS);
+            builder.writeTimeout(TIMEOUT, TimeUnit.SECONDS);
             //错误重连
             builder.retryOnConnectionFailure(true);
 
-//            HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
-//            loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-//            builder.addInterceptor(loggingInterceptor);
-
-
-//            builder.addInterceptor(new LoginInterceptor());
-
+            builder.addInterceptor(new LogInterceptor());
             mOkHttpClient = builder.build();
         }
     }
@@ -160,8 +146,6 @@ public class HttpHelper {
                     .addConverterFactory(GsonConverterFactory.create(gsonBuilder.create()))
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build();
-
-
         }
     }
 

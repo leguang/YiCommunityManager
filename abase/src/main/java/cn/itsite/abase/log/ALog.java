@@ -8,8 +8,6 @@ import java.io.File;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
-import cn.itsite.abase.common.RxDatabase;
-
 /**
  * Author：leguang on 2016/10/9 0009 15:49
  * Email：langmanleguang@qq.com

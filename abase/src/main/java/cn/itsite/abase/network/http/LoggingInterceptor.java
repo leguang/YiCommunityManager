@@ -1,6 +1,7 @@
 package cn.itsite.abase.network.http;
 
 
+
 import java.io.IOException;
 
 import cn.itsite.abase.log.ALog;
@@ -15,7 +16,7 @@ import okio.BufferedSource;
  * Email：langmanleguang@qq.com
  */
 public class LoggingInterceptor implements Interceptor {
-    private final String TAG = this.getClass().getSimpleName();
+    private static final String TAG = LoggingInterceptor.class.getSimpleName();
 
     @Override
     public Response intercept(Chain chain) throws IOException {
