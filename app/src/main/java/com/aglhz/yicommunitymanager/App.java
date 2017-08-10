@@ -20,7 +20,6 @@ public class App extends BaseApplication implements Application.ActivityLifecycl
     @Override
     public void onCreate() {
         super.onCreate();
-        mContext = this;
         initData();//数据的初始化要在友盟推送之前，因为要注册别名时，用到用户名。
 //        initPush();//初始化友盟推送。
     }
