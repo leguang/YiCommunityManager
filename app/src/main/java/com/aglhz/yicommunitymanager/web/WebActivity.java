@@ -17,7 +17,6 @@ import cn.itsite.abase.mvp.view.base.BaseActivity;
 
 public class WebActivity extends BaseActivity {
     private static final String TAG = WebActivity.class.getSimpleName();
-    private String title;
     private String link;
 
     @Override
@@ -27,7 +26,7 @@ public class WebActivity extends BaseActivity {
         initData();
 
         if (savedInstanceState == null) {
-            loadRootFragment(R.id.fl_main_activity, WebFragment.newInstance(title, link));
+            loadRootFragment(R.id.fl_main_activity, WebFragment.newInstance(link));
         }
     }
 

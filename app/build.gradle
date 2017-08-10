@@ -28,8 +28,9 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    //基础依赖
-    compile project(':abase')
+    //基础依赖Module
+    debugCompile project(path: ':abase', configuration: 'debug')
+    releaseCompile project(path: ':abase', configuration: 'release')
 
     //黄油刀系列
     compile 'com.jakewharton:butterknife:8.4.0'

@@ -2,20 +2,12 @@ package com.aglhz.yicommunitymanager;
 
 import android.app.Activity;
 import android.app.Application;
-import android.app.Notification;
-import android.content.Context;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.aglhz.yicommunitymanager.common.UserHelper;
 
-import org.greenrobot.eventbus.EventBus;
-
 import cn.itsite.abase.BaseApplication;
 import cn.itsite.abase.log.ALog;
-import cn.itsite.abase.network.http.HttpHelper;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
 
 
 /**

@@ -34,7 +34,7 @@
         </activity>
 
         <activity
-            android:name=".main.MainActivity"
+            android:name=".web.WebActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"

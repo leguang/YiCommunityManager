@@ -37,7 +37,7 @@ public class WebFragment extends BaseFragment {
     private String link;
     private Unbinder unbinder;
 
-    public static WebFragment newInstance(String title, String link) {
+    public static WebFragment newInstance( String link) {
         ALog.e(TAG, "link-->" + link);
         Bundle args = new Bundle();
         args.putString("link", link);
