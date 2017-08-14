@@ -30,13 +30,12 @@ public class BaseApplication extends MultiDexApplication {
                     .install();
             //初始化内存泄露监听
 //        mRefWatcher = LeakCanary.install(this);
-            ALog.e("1111111111111");
             // 初始化卡顿监听
 //        BlockCanary.install(this, new AppContext()).start();
-            ALog.init(true, "S1");
+            ALog.init(true, "yicommunitymanager");
 
         } else {
-            ALog.init(false, "S1");//在release版中禁止打印log。
+            ALog.init(false, "yicommunitymanager");//在release版中禁止打印log。
             Thread.setDefaultUncaughtExceptionHandler(AppExceptionHandler.getInstance(this));//在release版中处理全局异常。
         }
     }

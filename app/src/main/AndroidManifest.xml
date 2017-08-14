@@ -21,6 +21,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <!-- 以下友盟推送 -->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="598bf7d0310c9375a7000256" />
+        <meta-data
+            android:name="UMENG_MESSAGE_SECRET"
+            android:value="610568e5a0432107899c5afbc8ce6ce6" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="Umeng" />
+        <!-- 以上友盟推送 -->
+
         <activity
             android:name=".launch.LaunchActivity"
             android:launchMode="singleTop"

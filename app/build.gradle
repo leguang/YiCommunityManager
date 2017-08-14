@@ -32,6 +32,9 @@ dependencies {
     debugCompile project(path: ':abase', configuration: 'debug')
     releaseCompile project(path: ':abase', configuration: 'release')
 
+    //友盟推送
+    compile project(':PushSDK')
+
     //黄油刀系列
     compile 'com.jakewharton:butterknife:8.4.0'
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
