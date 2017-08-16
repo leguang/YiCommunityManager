@@ -5,7 +5,7 @@ import android.os.Bundle;
 import com.aglhz.yicommunitymanager.R;
 
 import cn.itsite.abase.log.ALog;
-import cn.itsite.abase.mvp.view.base.BaseActivity;
+import me.yokeyword.fragmentation.SupportActivity;
 
 
 /**
@@ -15,7 +15,7 @@ import cn.itsite.abase.mvp.view.base.BaseActivity;
  * 负责项目中的web部分。
  */
 
-public class WebActivity extends BaseActivity {
+public class WebActivity extends SupportActivity {
     private static final String TAG = WebActivity.class.getSimpleName();
     private String link;
 
@@ -24,7 +24,6 @@ public class WebActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initData();
-
         if (savedInstanceState == null) {
             loadRootFragment(R.id.fl_main_activity, WebFragment.newInstance(link));
         }

@@ -36,8 +36,7 @@ public class WebFragment extends BaseFragment {
     WebView mWebView;
     @BindView(R.id.ptr_web_fragment)
     PtrFrameLayout ptrFramlayout;
-    @BindView(R.id.state_bar)
-    View stateBar;
+
     private String link;
     private Unbinder unbinder;
 
@@ -45,7 +44,6 @@ public class WebFragment extends BaseFragment {
         ALog.e(TAG, "link-->" + link);
         Bundle args = new Bundle();
         args.putString("link", link);
-
         WebFragment fragment = new WebFragment();
         fragment.setArguments(args);
         return fragment;
@@ -55,7 +53,6 @@ public class WebFragment extends BaseFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         Bundle args = getArguments();
         if (args != null) {
             link = args.getString("link");
@@ -73,7 +70,6 @@ public class WebFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initStateBar(stateBar);
         initPtrFrameLayout(ptrFramlayout, mWebView);
         initWebView();
     }

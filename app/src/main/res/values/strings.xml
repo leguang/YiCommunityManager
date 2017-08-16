@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">亿社区物业管理</string>
+    <string name="app_name">亿社区管家</string>
 
     <!--Launch模块-->
     <string name="login">登录</string>

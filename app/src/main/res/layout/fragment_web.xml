@@ -5,12 +5,6 @@
     android:background="@color/material_grey_200"
     android:orientation="vertical">
 
-    <View
-        android:id="@+id/state_bar"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:background="#438eb8" />
-
     <in.srain.cube.views.ptr.PtrFrameLayout xmlns:cube_ptr="http://schemas.android.com/apk/res-auto"
         android:id="@+id/ptr_web_fragment"
         android:layout_width="match_parent"
