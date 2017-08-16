@@ -14,6 +14,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.aglhz.yicommunitymanager.R;
+import com.aglhz.yicommunitymanager.common.JavaScriptObject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -37,7 +38,7 @@ public class WebFragment extends BaseFragment {
     private String link;
     private Unbinder unbinder;
 
-    public static WebFragment newInstance( String link) {
+    public static WebFragment newInstance(String link) {
         ALog.e(TAG, "link-->" + link);
         Bundle args = new Bundle();
         args.putString("link", link);
@@ -69,6 +70,7 @@ public class WebFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        initStateBar(mWebView);
         initPtrFrameLayout(ptrFramlayout, mWebView);
         initWebView();
     }
@@ -90,8 +92,7 @@ public class WebFragment extends BaseFragment {
         webSettings.setDomStorageEnabled(true);
         webSettings.setGeolocationEnabled(true);
 
-//        mWebView.addJavascriptInterface(new JavaScriptObject(_mActivity), "android");
-
+        mWebView.addJavascriptInterface(new JavaScriptObject(_mActivity), "android");
         mWebView.setWebViewClient(new WebViewClient() {
 
             @Override

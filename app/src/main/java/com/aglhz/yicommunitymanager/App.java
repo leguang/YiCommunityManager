@@ -7,6 +7,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.aglhz.yicommunitymanager.common.ApiService;
 import com.aglhz.yicommunitymanager.common.UserHelper;
 import com.umeng.message.IUmengRegisterCallback;
 import com.umeng.message.MsgConstant;
@@ -18,6 +19,9 @@ import com.umeng.message.entity.UMessage;
 
 import cn.itsite.abase.BaseApplication;
 import cn.itsite.abase.log.ALog;
+import cn.itsite.abase.network.http.HttpHelper;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 
 /**
@@ -100,11 +104,11 @@ public class App extends BaseApplication implements Application.ActivityLifecycl
 
                 ALog.e(TAG, "deviceToken-->" + deviceToken);
 
-//                HttpHelper.getService(ApiService.class)
-//                        .requestUMeng(ApiService.requestUMeng, UserHelper.token, "and_" + deviceToken, UserHelper.account, "userType")
-//                        .subscribeOn(Schedulers.io())
-//                        .observeOn(AndroidSchedulers.mainThread())
-//                        .subscribe(baseBean -> ALog.e(TAG, baseBean.getOther().getMessage()));
+                HttpHelper.getService(ApiService.class)
+                        .requestRegisterPush(ApiService.requestRegisterPush, UserHelper.token, UserHelper.account, "app_user", "and_" + deviceToken)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(baseBean -> ALog.e(TAG, baseBean.getOther().getMessage()));
             }
 
             @Override

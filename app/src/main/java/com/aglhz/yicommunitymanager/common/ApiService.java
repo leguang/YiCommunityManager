@@ -24,15 +24,15 @@ public interface ApiService {
     //*************以上基础路径*******************
 
 
-    //登录
+    //登录。
     String requestLogin = BASE_USER + "/appbackend/user/from-client/login";
 
     @POST
     Observable<UserBean> requestLogin(@Url String url
-            , @Query("user") String user
-            , @Query("pwd") String pwd);
+            , @Query("account") String user
+            , @Query("password") String pwd);
 
-    //登出
+    //登出。
     String requestLogout = BASE_USER + "/appbackend/user/from-client/logout";
 
     @POST
@@ -41,12 +41,22 @@ public interface ApiService {
             @Query("token") String token);
 
 
-    //登录验证
+    //登录验证。
     String requestCheckToken = BASE_USER + "/appbackend/user/from-client/login-token";
 
     @POST
     Observable<BaseBean> requestCheckToken(@Url String url,
                                            @Query("token") String token);
+
+    //注册友盟推送。
+    String requestRegisterPush = BASE_USER + "/appbackend/umparams/from-client/umengparams-create";
+
+    @POST
+    Observable<BaseBean> requestRegisterPush(@Url String url,
+                                             @Query("token") String token,
+                                             @Query("alias") String alias,
+                                             @Query("aliasType") String aliasType,
+                                             @Query("deviceToken") String deviceToken);
 
 }
 

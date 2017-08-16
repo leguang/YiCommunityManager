@@ -68,7 +68,7 @@ public class SplashFragment extends BaseFragment {
 
     private void go2Main() {
         Intent intent = new Intent(_mActivity, WebActivity.class);
-        intent.putExtra("link", "https://github.com/leguang/YiCommunityManager");
+        intent.putExtra("link", Constants.URL.replace("%1", UserHelper.token));
         startActivity(intent);
         _mActivity.overridePendingTransition(0, 0);
         //此处之所以延迟退出是因为立即退出在小米手机上会有一个退出跳转动画，而我不想要这个垂直退出的跳转动画。

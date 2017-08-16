@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.text.TextUtils;
 
 import com.aglhz.yicommunitymanager.App;
-import com.aglhz.yicommunitymanager.entity.bean.UserBean;
 import com.google.gson.Gson;
 
 import cn.itsite.abase.log.ALog;
@@ -29,9 +28,6 @@ public class UserHelper {
     public static String FILE_NAME = "default";
     public static String token = "";
 
-    public static UserBean.DataBean.MemberInfoBean userInfo;
-
-
     //判断是否登录。
     public static boolean isLogined() {
         return !TextUtils.isEmpty(token);
@@ -43,7 +39,6 @@ public class UserHelper {
         token = "";
         account = "";
         password = "";
-        userInfo = null;
     }
 
     //更新Token。
@@ -52,30 +47,6 @@ public class UserHelper {
         SharedPreferences.Editor editor = getEditor();
         editor.putString(TOKEN, token);
         return editor.commit();
-    }
-
-    //更新用户信息。
-    public static boolean setUserInfo(UserBean.DataBean.MemberInfoBean memberInfo) {
-        setToken(memberInfo.getToken());
-        UserHelper.userInfo = memberInfo;
-        SharedPreferences.Editor editor = getEditor();
-        String info = new Gson().toJson(memberInfo);
-        editor.putString(USER_INFO, info);
-        return editor.commit();
-    }
-
-
-    //获取用户信息。
-    public static UserBean.DataBean.MemberInfoBean getUserInfo() {
-        if (userInfo != null) {
-            return userInfo;
-        }
-        String userInfo = getSp().getString(USER_INFO, "");
-        if (TextUtils.isEmpty(userInfo)) {
-            return null;
-        }
-        UserHelper.userInfo = new Gson().fromJson(userInfo, UserBean.DataBean.MemberInfoBean.class);
-        return UserHelper.userInfo;
     }
 
     //更新账号密码，同时更改了SP文件名，作为用户数据的初始化入口。
@@ -119,8 +90,6 @@ public class UserHelper {
 
         ALog.e(TAG, "account-->" + account);
         ALog.e(TAG, "password-->" + password);
-
-        getUserInfo();
     }
 
     //更新是否记住密码。

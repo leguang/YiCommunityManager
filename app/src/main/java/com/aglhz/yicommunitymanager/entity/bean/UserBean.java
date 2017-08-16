@@ -1,17 +1,19 @@
 package com.aglhz.yicommunitymanager.entity.bean;
 
 /**
- * Created by YandZD on 2017/1/17.
+ * Created by leguang on 2017/8/15 0015.
+ * Email：langmanleguang@qq.com
  */
 
-public class UserBean extends BaseBean {
-
+public class UserBean {
 
     /**
-     * data : {"isSuccess":true,"status":true,"memberInfo":{"id":"237ac0dc-24c3-45e1-b675-6dfb6144063e","mobile":"135****9720","email":"","sex":0,"qq":"","nickName":"uirrv0913","face":"http://aglhzmall.image.alimmdn.com/member/20170105115242891113.jpeg","point":0,"money":"0","token":"tk_e8286a11-f646-447b-8743-f87e9eb2335f","level":0,"levelName":"","grade":0,"gradeName":""}}
+     * data : {"token":"ac3ae0853d9b0e9a238ba91b75aaccd4","aliasType":"app_user"}
+     * other : {"code":200,"message":"登录成功","time":"","currpage":0,"next":"","forward":"","refresh":"","first":""}
      */
 
     private DataBean data;
+    private OtherBean other;
 
     public DataBean getData() {
         return data;
@@ -21,185 +23,123 @@ public class UserBean extends BaseBean {
         this.data = data;
     }
 
+    public OtherBean getOther() {
+        return other;
+    }
+
+    public void setOther(OtherBean other) {
+        this.other = other;
+    }
+
     public static class DataBean {
         /**
-         * isSuccess : true
-         * status : true
-         * memberInfo : {"id":"237ac0dc-24c3-45e1-b675-6dfb6144063e","mobile":"135****9720","email":"","sex":0,"qq":"","nickName":"uirrv0913","face":"http://aglhzmall.image.alimmdn.com/member/20170105115242891113.jpeg","point":0,"money":"0","token":"tk_e8286a11-f646-447b-8743-f87e9eb2335f","level":0,"levelName":"","grade":0,"gradeName":""}
+         * token : ac3ae0853d9b0e9a238ba91b75aaccd4
+         * aliasType : app_user
          */
 
-        private boolean isSuccess;
-        private boolean status;
-        private MemberInfoBean memberInfo;
+        private String token;
+        private String aliasType;
 
-        public boolean isIsSuccess() {
-            return isSuccess;
+        public String getToken() {
+            return token;
         }
 
-        public void setIsSuccess(boolean isSuccess) {
-            this.isSuccess = isSuccess;
+        public void setToken(String token) {
+            this.token = token;
         }
 
-        public boolean isStatus() {
-            return status;
+        public String getAliasType() {
+            return aliasType;
         }
 
-        public void setStatus(boolean status) {
-            this.status = status;
+        public void setAliasType(String aliasType) {
+            this.aliasType = aliasType;
+        }
+    }
+
+    public static class OtherBean {
+        /**
+         * code : 200
+         * message : 登录成功
+         * time :
+         * currpage : 0
+         * next :
+         * forward :
+         * refresh :
+         * first :
+         */
+
+        private int code;
+        private String message;
+        private String time;
+        private int currpage;
+        private String next;
+        private String forward;
+        private String refresh;
+        private String first;
+
+        public int getCode() {
+            return code;
         }
 
-        public MemberInfoBean getMemberInfo() {
-            return memberInfo;
+        public void setCode(int code) {
+            this.code = code;
         }
 
-        public void setMemberInfo(MemberInfoBean memberInfo) {
-            this.memberInfo = memberInfo;
+        public String getMessage() {
+            return message;
         }
 
-        public static class MemberInfoBean {
-            /**
-             * id : 237ac0dc-24c3-45e1-b675-6dfb6144063e
-             * mobile : 135****9720
-             * email :
-             * sex : 0
-             * qq :
-             * nickName : uirrv0913
-             * face : http://aglhzmall.image.alimmdn.com/member/20170105115242891113.jpeg
-             * point : 0
-             * money : 0
-             * token : tk_e8286a11-f646-447b-8743-f87e9eb2335f
-             * level : 0
-             * levelName :
-             * grade : 0
-             * gradeName :
-             */
+        public void setMessage(String message) {
+            this.message = message;
+        }
 
-            private String id;
-            private String mobile;
-            private String email;
-            private int sex;
-            private String qq;
-            private String nickName;
-            private String face;
-            private int point;
-            private String money;
-            private String token;
-            private int level;
-            private String levelName;
-            private int grade;
-            private String gradeName;
+        public String getTime() {
+            return time;
+        }
 
-            public String getId() {
-                return id;
-            }
+        public void setTime(String time) {
+            this.time = time;
+        }
 
-            public void setId(String id) {
-                this.id = id;
-            }
+        public int getCurrpage() {
+            return currpage;
+        }
 
-            public String getMobile() {
-                return mobile;
-            }
+        public void setCurrpage(int currpage) {
+            this.currpage = currpage;
+        }
 
-            public void setMobile(String mobile) {
-                this.mobile = mobile;
-            }
+        public String getNext() {
+            return next;
+        }
 
-            public String getEmail() {
-                return email;
-            }
+        public void setNext(String next) {
+            this.next = next;
+        }
 
-            public void setEmail(String email) {
-                this.email = email;
-            }
+        public String getForward() {
+            return forward;
+        }
 
-            public int getSex() {
-                return sex;
-            }
+        public void setForward(String forward) {
+            this.forward = forward;
+        }
 
-            public void setSex(int sex) {
-                this.sex = sex;
-            }
+        public String getRefresh() {
+            return refresh;
+        }
 
-            public String getQq() {
-                return qq;
-            }
+        public void setRefresh(String refresh) {
+            this.refresh = refresh;
+        }
 
-            public void setQq(String qq) {
-                this.qq = qq;
-            }
+        public String getFirst() {
+            return first;
+        }
 
-            public String getNickName() {
-                return nickName;
-            }
-
-            public void setNickName(String nickName) {
-                this.nickName = nickName;
-            }
-
-            public String getFace() {
-                return face;
-            }
-
-            public void setFace(String face) {
-                this.face = face;
-            }
-
-            public int getPoint() {
-                return point;
-            }
-
-            public void setPoint(int point) {
-                this.point = point;
-            }
-
-            public String getMoney() {
-                return money;
-            }
-
-            public void setMoney(String money) {
-                this.money = money;
-            }
-
-            public String getToken() {
-                return token;
-            }
-
-            public void setToken(String token) {
-                this.token = token;
-            }
-
-            public int getLevel() {
-                return level;
-            }
-
-            public void setLevel(int level) {
-                this.level = level;
-            }
-
-            public String getLevelName() {
-                return levelName;
-            }
-
-            public void setLevelName(String levelName) {
-                this.levelName = levelName;
-            }
-
-            public int getGrade() {
-                return grade;
-            }
-
-            public void setGrade(int grade) {
-                this.grade = grade;
-            }
-
-            public String getGradeName() {
-                return gradeName;
-            }
-
-            public void setGradeName(String gradeName) {
-                this.gradeName = gradeName;
-            }
+        public void setFirst(String first) {
+            this.first = first;
         }
     }
 }

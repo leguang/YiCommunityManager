@@ -1,9 +1,10 @@
 package com.aglhz.yicommunitymanager.login.view;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -13,13 +14,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.aglhz.yicommunitymanager.R;
+import com.aglhz.yicommunitymanager.common.Constants;
 import com.aglhz.yicommunitymanager.common.Params;
 import com.aglhz.yicommunitymanager.common.UserHelper;
 import com.aglhz.yicommunitymanager.login.contract.LoginContract;
 import com.aglhz.yicommunitymanager.login.presenter.LoginPresenter;
+import com.aglhz.yicommunitymanager.web.WebActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -93,8 +95,8 @@ public class LoginFragment extends BaseFragment<LoginContract.Presenter> impleme
             case R.id.cb_remember:
                 break;
             case R.id.bt_login:
-                params.user = etUsername.getText().toString().trim();
-                params.pwd = etPassword.getText().toString().trim();
+                params.account = etUsername.getText().toString().trim();
+                params.password = etPassword.getText().toString().trim();
                 mPresenter.requestLogin(params);
                 break;
         }
@@ -133,7 +135,16 @@ public class LoginFragment extends BaseFragment<LoginContract.Presenter> impleme
     @Override
     public void responseLogin(Params params) {
         UserHelper.setRemember(cbRemember.isChecked());
-        _mActivity.finish();
+        go2Main();
+    }
+
+    private void go2Main() {
+        Intent intent = new Intent(_mActivity, WebActivity.class);
+        intent.putExtra("link", Constants.URL.replace("%1", UserHelper.token));
+        startActivity(intent);
+        _mActivity.overridePendingTransition(0, 0);
+        //此处之所以延迟退出是因为立即退出在小米手机上会有一个退出跳转动画，而我不想要这个垂直退出的跳转动画。
+        new Handler().postDelayed(() -> _mActivity.finish(), 1000);
     }
 }
 

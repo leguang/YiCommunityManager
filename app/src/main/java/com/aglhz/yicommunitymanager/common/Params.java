@@ -10,9 +10,8 @@ public class Params {
     private static final String TAG = Params.class.getSimpleName();
     public static String token;
     public static String cmnt_c = "";
-    public String sc = "AglhzYsq";
-    public String user = "";
-    public String pwd = "";
+    public String account = "";
+    public String password = "";
 
     private Params() {
     }

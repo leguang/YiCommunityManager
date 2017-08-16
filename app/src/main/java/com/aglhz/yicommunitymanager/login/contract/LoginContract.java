@@ -2,6 +2,7 @@ package com.aglhz.yicommunitymanager.login.contract;
 
 
 import com.aglhz.yicommunitymanager.common.Params;
+import com.aglhz.yicommunitymanager.entity.bean.BaseBean;
 import com.aglhz.yicommunitymanager.entity.bean.UserBean;
 
 import cn.itsite.abase.mvp.contract.base.BaseContract;
