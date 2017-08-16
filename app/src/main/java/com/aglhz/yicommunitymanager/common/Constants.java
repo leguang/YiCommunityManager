@@ -21,7 +21,7 @@ public class Constants {
     static {
         if (BuildConfig.DEBUG) {
             //调试可以改这里的地址。
-            BASE_USER = "http://192.168.7.101:8080/sub_property_ysq";//物业
+            BASE_USER = "http://www.aglhz.com:8090/sub_property_ysq";//物业
         } else {
             //这里的是正式版的基础地址，永远不要动。
             BASE_USER = "http://www.aglhz.com:8090/sub_property_ysq";//物业
@@ -36,5 +36,4 @@ public class Constants {
     public static final int RESPONSE_CODE_NOMAL = 200;
     public static final int RESPONSE_CODE_LOGOUT = 123;
 
-    public static final String URL = "http://192.168.7.110:8000/index.html?token=%1&appType=2";
 }

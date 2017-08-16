@@ -58,5 +58,6 @@ public interface ApiService {
                                              @Query("aliasType") String aliasType,
                                              @Query("deviceToken") String deviceToken);
 
+    String URL = "http://www.aglhz.com:8090/index.html?token=%1&appType=2";
 }
 

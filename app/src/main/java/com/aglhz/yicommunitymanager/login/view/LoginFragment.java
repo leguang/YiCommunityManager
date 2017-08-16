@@ -16,6 +16,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 
 import com.aglhz.yicommunitymanager.R;
+import com.aglhz.yicommunitymanager.common.ApiService;
 import com.aglhz.yicommunitymanager.common.Constants;
 import com.aglhz.yicommunitymanager.common.Params;
 import com.aglhz.yicommunitymanager.common.UserHelper;
@@ -140,7 +141,7 @@ public class LoginFragment extends BaseFragment<LoginContract.Presenter> impleme
 
     private void go2Main() {
         Intent intent = new Intent(_mActivity, WebActivity.class);
-        intent.putExtra("link", Constants.URL.replace("%1", UserHelper.token));
+        intent.putExtra("link", ApiService.URL.replace("%1", UserHelper.token));
         startActivity(intent);
         _mActivity.overridePendingTransition(0, 0);
         //此处之所以延迟退出是因为立即退出在小米手机上会有一个退出跳转动画，而我不想要这个垂直退出的跳转动画。
