@@ -3,7 +3,7 @@ package com.aglhz.yicommunitymanager.entity.bean;
 public class BaseBean {
 
     /**
-     * other : {"code":500,"message":"手机号 不能为空","time":"","currpage":0,"next":"","forward":"","refresh":"","first":""}
+     * other : {"currpage":0,"message":"用户已经登录！","time":"","forward":"","next":"","code":200,"first":"","refresh":""}
      */
 
     private OtherBean other;
@@ -18,31 +18,31 @@ public class BaseBean {
 
     public static class OtherBean {
         /**
-         * code : 500
-         * message : 手机号 不能为空
-         * time :
          * currpage : 0
-         * next :
+         * message : 用户已经登录！
+         * time :
          * forward :
-         * refresh :
+         * next :
+         * code : 200
          * first :
+         * refresh :
          */
 
-        private int code;
+        private int currpage;
         private String message;
         private String time;
-        private int currpage;
-        private String next;
         private String forward;
-        private String refresh;
+        private String next;
+        private int code;
         private String first;
+        private String refresh;
 
-        public int getCode() {
-            return code;
+        public int getCurrpage() {
+            return currpage;
         }
 
-        public void setCode(int code) {
-            this.code = code;
+        public void setCurrpage(int currpage) {
+            this.currpage = currpage;
         }
 
         public String getMessage() {
@@ -61,12 +61,12 @@ public class BaseBean {
             this.time = time;
         }
 
-        public int getCurrpage() {
-            return currpage;
+        public String getForward() {
+            return forward;
         }
 
-        public void setCurrpage(int currpage) {
-            this.currpage = currpage;
+        public void setForward(String forward) {
+            this.forward = forward;
         }
 
         public String getNext() {
@@ -77,20 +77,12 @@ public class BaseBean {
             this.next = next;
         }
 
-        public String getForward() {
-            return forward;
+        public int getCode() {
+            return code;
         }
 
-        public void setForward(String forward) {
-            this.forward = forward;
-        }
-
-        public String getRefresh() {
-            return refresh;
-        }
-
-        public void setRefresh(String refresh) {
-            this.refresh = refresh;
+        public void setCode(int code) {
+            this.code = code;
         }
 
         public String getFirst() {
@@ -101,25 +93,12 @@ public class BaseBean {
             this.first = first;
         }
 
-        @Override
-        public String toString() {
-            return "OtherBean{" +
-                    "code=" + code +
-                    ", message='" + message + '\'' +
-                    ", time='" + time + '\'' +
-                    ", currpage=" + currpage +
-                    ", next='" + next + '\'' +
-                    ", forward='" + forward + '\'' +
-                    ", refresh='" + refresh + '\'' +
-                    ", first='" + first + '\'' +
-                    '}';
+        public String getRefresh() {
+            return refresh;
         }
-    }
 
-    @Override
-    public String toString() {
-        return "BaseBean{" +
-                "other=" + other +
-                '}';
+        public void setRefresh(String refresh) {
+            this.refresh = refresh;
+        }
     }
 }

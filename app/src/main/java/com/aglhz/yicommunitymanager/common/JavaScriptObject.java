@@ -32,20 +32,20 @@ public class JavaScriptObject {
      */
     @JavascriptInterface
     public void AndroidEffect() {
-        ALog.e("AndroidEffect-注销->");
+        ALog.e("JavaScriptObject", "AndroidEffect-注销->");
         new AlertDialog.Builder(mActivity)
                 .setTitle("提示")
                 .setMessage("确定退出登录？")
                 .setPositiveButton("确定", (dialog, which) -> {
+                    UserHelper.clear();
+
                     HttpHelper.getService(ApiService.class)
                             .requestLogout(ApiService.requestLogout, UserHelper.token)
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe(baseBean -> {
                                 ALog.e("JavaScriptObject", baseBean.getOther().getMessage());
-                                UserHelper.clear();//要放在最后清除，不然上面用到UserHelper.account也为空了
                                 go2Login();
-
                             });
                 })
                 .setNegativeButton("取消", null)
@@ -62,7 +62,7 @@ public class JavaScriptObject {
      */
     @JavascriptInterface
     public void AndroidExit() {
-        ALog.e("AndroidExit-token失效->");
+        ALog.e("JavaScriptObject", "AndroidExit-token失效->");
         go2Login();
     }
 }

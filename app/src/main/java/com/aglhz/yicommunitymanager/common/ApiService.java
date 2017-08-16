@@ -40,9 +40,8 @@ public interface ApiService {
             @Url String url,
             @Query("token") String token);
 
-
     //登录验证。
-    String requestCheckToken = BASE_USER + "/appbackend/user/from-client/login-token";
+    String requestCheckToken = BASE_USER + "/appbackend/user/from-client/check-login";
 
     @POST
     Observable<BaseBean> requestCheckToken(@Url String url,
@@ -58,6 +57,7 @@ public interface ApiService {
                                              @Query("aliasType") String aliasType,
                                              @Query("deviceToken") String deviceToken);
 
-    String URL = "http://www.aglhz.com:8090/index.html?token=%1&appType=2";
+    String URL = "http://www.aglhz.com/sub_property_ysq/m/manager/index.html?appType=2&token=%1";
+//    String URL = "http://192.168.7.106:8000/index.html?appType=2&token=%1";
 }
 

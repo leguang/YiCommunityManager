@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.GeolocationPermissions;
+import android.webkit.JsPromptResult;
 import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -35,6 +36,8 @@ public class WebFragment extends BaseFragment {
     WebView mWebView;
     @BindView(R.id.ptr_web_fragment)
     PtrFrameLayout ptrFramlayout;
+    @BindView(R.id.state_bar)
+    View stateBar;
     private String link;
     private Unbinder unbinder;
 
@@ -70,7 +73,7 @@ public class WebFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initStateBar(mWebView);
+        initStateBar(stateBar);
         initPtrFrameLayout(ptrFramlayout, mWebView);
         initWebView();
     }
@@ -91,7 +94,7 @@ public class WebFragment extends BaseFragment {
         webSettings.setAppCacheEnabled(false);
         webSettings.setDomStorageEnabled(true);
         webSettings.setGeolocationEnabled(true);
-
+        mWebView.requestFocus();
         mWebView.addJavascriptInterface(new JavaScriptObject(_mActivity), "android");
         mWebView.setWebViewClient(new WebViewClient() {
 
@@ -121,6 +124,18 @@ public class WebFragment extends BaseFragment {
             public boolean onJsAlert(WebView view, String url, String message, JsResult result) {
                 ALog.e("onReceiveValue::" + message);
                 return super.onJsAlert(view, url, message, result);
+            }
+
+            @Override
+            public boolean onJsConfirm(WebView view, String url, String message, JsResult result) {
+                ALog.e("onJsConfirm::" + message);
+                return super.onJsConfirm(view, url, message, result);
+            }
+
+            @Override
+            public boolean onJsPrompt(WebView view, String url, String message, String defaultValue, JsPromptResult result) {
+                ALog.e("onJsPrompt::" + message);
+                return super.onJsPrompt(view, url, message, defaultValue, result);
             }
         });
     }
