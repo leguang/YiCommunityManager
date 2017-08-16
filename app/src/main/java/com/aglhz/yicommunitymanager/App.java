@@ -192,6 +192,5 @@ public class App extends BaseApplication implements Application.ActivityLifecycl
         };
 
         mPushAgent.setNotificationClickHandler(notificationClickHandler);
-
     }
 }

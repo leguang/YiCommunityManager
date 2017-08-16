@@ -96,6 +96,7 @@ public class WebFragment extends BaseFragment {
 
             @Override
             public void onPageFinished(WebView view, String url) {
+                link = url;
                 super.onPageFinished(view, url);
                 if (ptrFramlayout != null) {
                     ptrFramlayout.refreshComplete();
